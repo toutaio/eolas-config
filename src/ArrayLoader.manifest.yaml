@@ -1,0 +1,12 @@
+aru:
+  semantic_address: config.loader.transform.Array
+  file: src/ArrayLoader.php
+  layer: L1_ATOM
+  description: Loader that returns a pre-built array as configuration
+  depends_on:
+    - config.loader.validate.Interface
+  test_file: tests/ArrayLoaderTest.php
+  scenarios:
+    - load flat config array via ArrayLoader
+    - load nested config array via ArrayLoader
+    - load empty config array via ArrayLoader

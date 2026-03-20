@@ -1,0 +1,19 @@
+aru:
+  semantic_address: config.repository.assemble.Config
+  file: src/ConfigRepository.php
+  layer: L2_MOLECULE
+  description: Typed config repository with dot-notation access, merging, and Result-based error handling
+  depends_on:
+    - config.ConfigKey
+    - config.ConfigError
+    - config.loader.validate.Interface
+  test_file: tests/ConfigRepositoryTest.php
+  scenarios:
+    - retrieve top-level value by ConfigKey
+    - retrieve nested value using dot-notation ConfigKey
+    - return Failure with ConfigError for missing key
+    - return Failure with ConfigError for deeply missing path
+    - retrieve sub-array as value by ConfigKey
+    - check key existence using ConfigKey
+    - merge additional loader and query merged keys
+    - return all config data as raw array

@@ -6,7 +6,6 @@ namespace Touta\Eolas;
 
 use Touta\Aria\Runtime\Failure;
 use Touta\Aria\Runtime\Result;
-use Touta\Aria\Runtime\StructuredFailure;
 use Touta\Aria\Runtime\Success;
 
 final readonly class ConfigRepository
@@ -24,19 +23,20 @@ final readonly class ConfigRepository
     }
 
     /**
-     * @return Success<mixed>|Failure<StructuredFailure>
+     * @return Success<mixed>|Failure<ConfigError>
      */
-    public function get(string $key): Result
+    public function get(ConfigKey $key): Result
     {
-        $segments = explode('.', $key);
+        $raw = $key->value;
+        $segments = explode('.', $raw);
         $current = $this->data;
 
         foreach ($segments as $segment) {
             if (!is_array($current) || !array_key_exists($segment, $current)) {
-                return Failure::from(new StructuredFailure(
-                    'CONFIG_KEY_NOT_FOUND',
-                    "Configuration key \"{$key}\" not found",
-                    ['key' => $key],
+                return Failure::from(new ConfigError(
+                    ConfigError::KEY_NOT_FOUND,
+                    "Configuration key \"{$raw}\" not found",
+                    ['key' => $raw],
                 ));
             }
 
@@ -46,7 +46,7 @@ final readonly class ConfigRepository
         return Success::of($current);
     }
 
-    public function has(string $key): bool
+    public function has(ConfigKey $key): bool
     {
         return $this->get($key)->isSuccess();
     }

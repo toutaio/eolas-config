@@ -1,0 +1,10 @@
+aru:
+  semantic_address: config.ConfigPath
+  file: src/ConfigPath.php
+  layer: L0_PRIMITIVE
+  description: Branded type wrapping a file path for config loading
+  depends_on: []
+  test_file: tests/ConfigPathTest.php
+  scenarios:
+    - wrap a file path string for config loading
+    - two ConfigPaths with the same value are equal

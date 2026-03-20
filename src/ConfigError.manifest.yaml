@@ -1,0 +1,13 @@
+aru:
+  semantic_address: config.ConfigError
+  file: src/ConfigError.php
+  layer: L0_PRIMITIVE
+  description: Domain-typed error for configuration operations
+  depends_on: []
+  test_file: tests/ConfigErrorTest.php
+  scenarios:
+    - construct ConfigError with code and message
+    - construct ConfigError with context
+    - create new ConfigError with different message via withMessage
+    - merge additional context via withContext
+    - all error code constants are defined

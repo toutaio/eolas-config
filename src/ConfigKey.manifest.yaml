@@ -1,0 +1,11 @@
+aru:
+  semantic_address: config.ConfigKey
+  file: src/ConfigKey.php
+  layer: L0_PRIMITIVE
+  description: Branded type wrapping a config key string (e.g. "db.host")
+  depends_on: []
+  test_file: tests/ConfigKeyTest.php
+  scenarios:
+    - construct branded ConfigKey from valid dot-notation string
+    - ConfigKey preserves simple key without dots
+    - two ConfigKeys with the same value are equal

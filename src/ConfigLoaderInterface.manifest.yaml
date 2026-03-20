@@ -1,0 +1,8 @@
+aru:
+  semantic_address: config.loader.validate.Interface
+  file: src/ConfigLoaderInterface.php
+  layer: L1_ATOM
+  description: Contract for configuration loaders returning raw config arrays
+  depends_on: []
+  test_file: null
+  scenarios: []

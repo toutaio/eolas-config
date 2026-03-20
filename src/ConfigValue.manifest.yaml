@@ -1,0 +1,12 @@
+aru:
+  semantic_address: config.ConfigValue
+  file: src/ConfigValue.php
+  layer: L0_PRIMITIVE
+  description: Branded type wrapping a config value (mixed)
+  depends_on: []
+  test_file: tests/ConfigValueTest.php
+  scenarios:
+    - wrap a string config value
+    - wrap an integer config value
+    - wrap an array config value
+    - wrap a null config value

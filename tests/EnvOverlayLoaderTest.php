@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Touta\Eolas\EnvOverlayLoader;
 
+// Scenario: overlay environment variables onto base config
 it('overlays environment variables onto base config', function (): void {
     $base = ['app' => ['name' => 'MyApp', 'debug' => false]];
     $env = ['APP_NAME' => 'OverriddenApp', 'APP_DEBUG' => 'true'];
@@ -19,6 +20,7 @@ it('overlays environment variables onto base config', function (): void {
         ->and($data['app']['debug'])->toBe('true');
 });
 
+// Scenario: preserve base values when env vars are absent
 it('preserves base values when env vars are absent', function (): void {
     $base = ['app' => ['name' => 'MyApp']];
     $map = ['APP_NAME' => 'app.name'];
@@ -29,6 +31,7 @@ it('preserves base values when env vars are absent', function (): void {
     expect($data['app']['name'])->toBe('MyApp');
 });
 
+// Scenario: create nested keys from dot-notation env map
 it('creates nested keys from dot notation', function (): void {
     $base = [];
     $env = ['DB_HOST' => 'localhost'];

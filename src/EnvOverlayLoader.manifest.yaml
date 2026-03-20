@@ -1,0 +1,12 @@
+aru:
+  semantic_address: config.loader.transform.EnvOverlay
+  file: src/EnvOverlayLoader.php
+  layer: L1_ATOM
+  description: Loader that overlays environment variables onto a base config array
+  depends_on:
+    - config.loader.validate.Interface
+  test_file: tests/EnvOverlayLoaderTest.php
+  scenarios:
+    - overlay environment variables onto base config
+    - preserve base values when env vars are absent
+    - create nested keys from dot-notation env map
